@@ -1,6 +1,6 @@
 package mb.personal.queComemos3.domain
 
-enum t_rutina 
+enum Rutina 
 {
 	LEVE,
 	MEDIA,
