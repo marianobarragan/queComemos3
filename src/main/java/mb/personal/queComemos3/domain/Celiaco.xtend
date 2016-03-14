@@ -6,4 +6,8 @@ class Celiaco implements CondicionPreexistente{
 		true
 	}
 	
+	override esSaludable(Usuario usuario) {
+		true
+	}
+	
 }

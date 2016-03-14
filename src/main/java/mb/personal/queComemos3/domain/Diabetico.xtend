@@ -7,4 +7,8 @@ class Diabetico implements CondicionPreexistente{
 		usuario.tieneAlgunaPreferencia  
 	}
 	
+	override esSaludable(Usuario usuario) {
+		usuario.tieneRutina(Rutina.ACTIVA) || usuario.peso < 70.00
+	}
+	
 }

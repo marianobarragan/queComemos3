@@ -6,4 +6,8 @@ class Hipertenso implements CondicionPreexistente {
 		usuario.tieneAlgunaPreferencia
 	}
 	
+	override esSaludable(Usuario usuario) {
+		usuario.tieneRutina(Rutina.INTENSA)
+	}
+	
 }

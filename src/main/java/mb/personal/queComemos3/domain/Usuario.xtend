@@ -2,17 +2,21 @@ package mb.personal.queComemos3.domain
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
+import java.util.ArrayList
+
+@Accessors 
 
 class Usuario {
 	
-	@Accessors String nombre
-	@Accessors String sexo
-	@Accessors float peso
-	@Accessors float estatura
-	@Accessors Rutina rutina
-	@Accessors List<CondicionPreexistente> condicionesPreexistentes
+	String nombre
+	String sexo
+	float peso
+	float estatura
+	Rutina rutina
+	List<CondicionPreexistente> condicionesPreexistentes
+	List<String> preferencias = new ArrayList<String>
 	
-	def float indiceMasaCorporal(float peso, float estatura)
+	def float indiceMasaCorporal()
 	{
 		return peso / (estatura * estatura)
 	}
@@ -34,7 +38,24 @@ class Usuario {
 	}
 	
 	def boolean tieneAlgunaPreferencia() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		preferencias.size > 0
+	}
+	
+	def boolean tieneRutinaSaludable() {
+		(condicionesPreexistentes.size == 0 &&
+			18 > indiceMasaCorporal()  &&
+			indiceMasaCorporal() < 30
+		) || (
+			condicionesPreexistentes.forall[it.esSaludable(this)]
+		)
+	}
+	
+	def tieneRutina(Rutina rutina) {
+		this.rutina == rutina
+	}
+	
+	def leGusta(String string) {
+		preferencias.contains(string)
 	}
 	
 }

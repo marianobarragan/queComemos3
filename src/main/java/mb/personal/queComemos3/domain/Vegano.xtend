@@ -8,6 +8,11 @@ class Vegano implements CondicionPreexistente{
 	private List<String> palabrasClave =  Arrays.asList("pollo", "carne", "chivito", "chori")
 	override esValido(Usuario usuario) {
 		//las preferencias del usuairo no contienen ninguna palabraClave
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		!usuario.preferencias.containsAll(palabrasClave)
 	}
+	
+	override esSaludable(Usuario usuario) {
+		usuario.leGusta("frutas")
+	}
+	
 }
